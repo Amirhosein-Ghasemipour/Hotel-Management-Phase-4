@@ -35,4 +35,8 @@ public class Food {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String toString(){
+        return " name: " + name + " | price: " + price + " | description: " + description;
+    }
 }

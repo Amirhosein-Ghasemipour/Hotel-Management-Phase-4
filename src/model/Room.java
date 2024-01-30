@@ -63,4 +63,13 @@ public class Room {
     public void setAvailability(boolean availability) {
         this.availability = availability;
     }
+
+    public String toString(){
+        String status;
+        if(isAvailable())
+            status = "available";
+        else status = "not available";
+        return " number: " + number + " | size: " + size + " | price: " + price + " | type: "
+                + type + " | availability: " + status;
+    }
 }

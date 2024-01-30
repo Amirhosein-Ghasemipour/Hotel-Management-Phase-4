@@ -1,5 +1,6 @@
 package model.user;
 
+import model.Food;
 import model.Room;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ public class Guest extends User {
     private final int guestId;
     private double balance;
     private Room reservedRoom;
+    private ArrayList<Food> boughtFoods;
     private static int lastGuestId;
 
     static{
@@ -17,6 +19,7 @@ public class Guest extends User {
     {
         balance = 0;
        reservedRoom = null;
+       boughtFoods = new ArrayList<>();
     }
 
     public Guest(String username, String password){
@@ -25,6 +28,11 @@ public class Guest extends User {
         lastGuestId++;
     }
 
+    public void addFood(Food food, int number){
+        for(int i = 0; i < number; i++){
+            boughtFoods.add(food);
+        }
+    }
 
     public static int getLastGuestId() {
         return lastGuestId;
@@ -52,5 +60,17 @@ public class Guest extends User {
 
     public void setReservedRoom(Room reservedRoom) {
         this.reservedRoom = reservedRoom;
+    }
+
+    public ArrayList<Food> getBoughtFoods() {
+        return boughtFoods;
+    }
+
+    public void setBoughtFoods(ArrayList<Food> boughtFoods) {
+        this.boughtFoods = boughtFoods;
+    }
+
+    public String toString(){
+        return " username: " + getUsername() + " | room number: " + reservedRoom.getNumber();
     }
 }

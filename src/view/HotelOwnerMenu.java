@@ -113,47 +113,49 @@ public class HotelOwnerMenu {
 
     private static void showAllHotels(){
         int number = 1;
+        if(HotelManagement.getAllHotels().isEmpty())
+            System.out.println("there is no hotel yet");
+        else{
         for(Hotel hotel: HotelManagement.getAllHotels()){
-            System.out.println(number + "-" + " name: " + hotel.getName() + " | location: " + hotel.getLocation() +
-                    " | number of available rooms: " + hotel.getAvailableRooms().size());
+            System.out.println(number + "-" + hotel.toString());
             number++;
-        }
+        }}
     }
 
     private static void showHotelGuests(){
         int number = 1;
         Hotel hotel = HotelManagement.getCurrentHotelOwner().getHotel();
+        if(hotel.getGuests().isEmpty())
+            System.out.println("there is no guest yet");
+        else{
         for(Guest guest: hotel.getGuests()){
-            System.out.println(number + "-" + " username: " + guest.getUsername() + " | room number: "
-                    + guest.getReservedRoom().getNumber());
+            System.out.println(number + "-" + guest.toString());
             number++;
-        }
+        }}
     }
 
     private static void showHotelFoods(){
         int number = 1;
         Hotel hotel = HotelManagement.getCurrentHotelOwner().getHotel();
+        if(hotel.getAllFoods().isEmpty())
+            System.out.println("there is no food yet");
+        else{
         for(Food food : hotel.getAllFoods()){
-            System.out.println(number + "-" + " name: " + food.getName() + " | price: " + food.getPrice()
-                    + " | description: " + food.getDescription());
+            System.out.println(number + "-" + food.toString());
             number++;
-        }
+        }}
     }
 
     private static void showHotelRooms(){
         int number = 1;
         Hotel hotel = HotelManagement.getCurrentHotelOwner().getHotel();
-        String status;
+        if(hotel.getRooms().isEmpty())
+            System.out.println("there is no room yet");
+        else{
         for(Room room: hotel.getRooms()){
-            if(room.isAvailable()){
-                status = "available";
-            } else{
-                status = "booked";
-            }
-            System.out.println(number + "-" + "  room number: " + room.getNumber() + " | size: " + room.getSize() +
-                    " | price: " + room.getSize() + " | type: " + room.getType() + " | availability status: " + status);
+            System.out.println(number + "-" + room.toString());
             number++;
-        }
+        }}
     }
 
     private static void showHotelBalance(){

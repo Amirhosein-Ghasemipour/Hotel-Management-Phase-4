@@ -1,5 +1,6 @@
 package controller;
 
+import model.Food;
 import model.Hotel;
 import model.HotelManagement;
 import model.Room;
@@ -27,6 +28,7 @@ public class GuestMenuController {
             return GuestMenuMessages.RESERVE_ROOM_INSUFFICIENT_BALANCE;
 
         guest.setReservedRoom(room);
+        guest.setBalance(guest.getBalance() - room.getPrice());
         room.setAvailability(false);
         hotel.reserveRoom(room);
         return GuestMenuMessages.RESERVE_ROOM_SUCCESS;
@@ -41,5 +43,27 @@ public class GuestMenuController {
         guest.setReservedRoom(null);
         room.getHotel().leaveRoom(room);
         return GuestMenuMessages.LEAVE_ROOM_SUCCESS;
+    }
+
+    public static GuestMenuMessages buyFood(String foodName, int number){
+        Guest guest = HotelManagement.getCurrentGuest();
+        Room room = guest.getReservedRoom();
+        if(number <= 0)
+            return GuestMenuMessages.BUY_FOOD_NEGATIVE;
+
+        if(room == null)
+            return GuestMenuMessages.BUY_FOOD_ROOM_NOT_RESERVED;
+
+        Hotel hotel = room.getHotel();
+        Food food = hotel.getFoodByName(foodName);
+        if(food == null)
+            return GuestMenuMessages.BUY_FOOD_NOT_FOUND;
+
+        if(guest.getBalance() < food.getPrice() * number)
+            return GuestMenuMessages.BUY_FOOD_INSUFFICIENT_BALANCE;
+
+        guest.addFood(food, number);
+        guest.setBalance(guest.getBalance() - food.getPrice() * number);
+        return GuestMenuMessages.BUY_FOOD_SUCCESS;
     }
 }

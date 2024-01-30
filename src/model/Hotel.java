@@ -250,4 +250,8 @@ public class Hotel {
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
+
+    public String toString(){
+        return " name: " + name + " | location: " + location + " | number of available rooms: " + availableRooms.size();
+    }
 }

@@ -12,6 +12,8 @@ public enum GuestMenuCommands {
     GUEST_SHOW_HOTEL_FOODS("^show\\s+hotel\\s+(?<hotelName>\\S+)\\s+foods$"),
     GUEST_SHOW_BALANCE("^show\\s+my\\s+balance$"),
     GUEST_INCREASE_BALANCE("^increase\\s+my\\s+balance\\s+by\\s+(?<amount>\\d+)$"),
+    GUEST_SHOW_MY_ROOM("^show\\s+my\\s+room$"),
+    GUEST_SHOW_MY_FOODS("^show\\s+my\\s+foods$"),
     GUEST_RATE_HOTEL("^rate\\s+hotel\\s+(?<rating>\\d+)$"),
     LEAVE_COMMENT_FOR_HOTEL("^leave\\s+comment\\s+(?<content>.+)$");
 
