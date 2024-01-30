@@ -8,66 +8,65 @@ import model.Room;
 import model.user.Guest;
 import view.enums.commands.HotelOwnerMenuCommands;
 import view.enums.messages.HotelOwnerMenuMessages;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class HotelOwnerMenu {
-    public static void run(Scanner scanner){
-        while(true){
+    public static void run(Scanner scanner) {
+        while (true) {
             String command = scanner.nextLine();
             Matcher matcher;
-            if(command.matches("^\\s*logout\\s*$")){
+            if (command.matches("^\\s*logout\\s*$")) {
                 System.out.println("logged out to login menu");
                 break;
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_ADD_ROOM)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_ADD_ROOM)) != null) {
                 addRoom(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_REMOVE_ROOM)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_REMOVE_ROOM)) != null) {
                 removeRoom(matcher);
-            } else if( HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_ALL_HOTELS) != null){
+            } else if (HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_ALL_HOTELS) != null) {
                 showAllHotels();
-            } else if(HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_HOTEL_GUESTS) != null){
+            } else if (HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_HOTEL_GUESTS) != null) {
                 showHotelGuests();
-            } else if(HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_HOTEL_FOODS) != null){
+            } else if (HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_HOTEL_FOODS) != null) {
                 showHotelFoods();
-            } else if(HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_HOTEL_ROOMS) != null){
+            } else if (HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_HOTEL_ROOMS) != null) {
                 showHotelRooms();
-            } else if(HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_HOTEL_BALANCE) != null){
+            } else if (HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SHOW_HOTEL_BALANCE) != null) {
                 showHotelBalance();
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_HOTEL_BALANCE)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_HOTEL_BALANCE)) != null) {
                 increaseHotelBalance(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_ADD_FOOD)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_ADD_FOOD)) != null) {
                 addFood(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_REMOVE_FOOD)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_REMOVE_FOOD)) != null) {
                 removeFood(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_ONE_ROOM_PRICE)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_ONE_ROOM_PRICE)) != null) {
                 increaseOneRoomPrice(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_ALL_ROOMS_PRICE)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_ALL_ROOMS_PRICE)) != null) {
                 increaseAllRoomsPrice(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SET_DISCOUNT_ONE_ROOM)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SET_DISCOUNT_ONE_ROOM)) != null) {
                 setDiscountOneRoom(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SET_DISCOUNT_ALL_ROOMS)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SET_DISCOUNT_ALL_ROOMS)) != null) {
                 setDiscountAllRooms(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SET_DISCOUNT_ONE_FOOD)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SET_DISCOUNT_ONE_FOOD)) != null) {
                 setDiscountOneFood(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SET_DISCOUNT_ALL_FOODS)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_SET_DISCOUNT_ALL_FOODS)) != null) {
                 setDiscountAllFoods(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_ONE_FOOD_PRICE)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_ONE_FOOD_PRICE)) != null) {
                 increaseOneFoodPrice(matcher);
-            } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_ALL_FOODS_PRICE)) != null){
+            } else if ((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_INCREASE_ALL_FOODS_PRICE)) != null) {
                 increaseAllFoodsPrice(matcher);
             } else
                 System.out.println("invalid command");
         }
     }
 
-    private static void addRoom(Matcher matcher){
+    private static void addRoom(Matcher matcher) {
         int number = Integer.parseInt(matcher.group("number"));
         double size = Double.parseDouble(matcher.group("size"));
         double price = Double.parseDouble(matcher.group("price"));
         String type = matcher.group("type");
         HotelOwnerMenuMessages message = HotelOwnerMenuController.addRoom(number, size, price, type);
-        switch(message){
+        switch (message) {
             case ADD_ROOM_NUMBER_INVALID:
                 System.out.println("add room failed, your room number must be a positive number");
                 break;
@@ -90,10 +89,10 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void removeRoom(Matcher matcher){
+    private static void removeRoom(Matcher matcher) {
         int number = Integer.parseInt(matcher.group("number"));
         HotelOwnerMenuMessages message = HotelOwnerMenuController.removeRoom(number);
-        switch(message){
+        switch (message) {
             case REMOVE_ROOM_NUMBER_INVALID:
                 System.out.println("remove room failed, your room number must be a positive number");
                 break;
@@ -111,62 +110,66 @@ public class HotelOwnerMenu {
         }
     }
 
-    private static void showAllHotels(){
+    private static void showAllHotels() {
         int number = 1;
-        if(HotelManagement.getAllHotels().isEmpty())
+        if (HotelManagement.getAllHotels().isEmpty())
             System.out.println("there is no hotel yet");
-        else{
-        for(Hotel hotel: HotelManagement.getAllHotels()){
-            System.out.println(number + "-" + hotel.toString());
-            number++;
-        }}
+        else {
+            for (Hotel hotel : HotelManagement.getAllHotels()) {
+                System.out.println(number + "-" + hotel.toString());
+                number++;
+            }
+        }
     }
 
-    private static void showHotelGuests(){
+    private static void showHotelGuests() {
         int number = 1;
         Hotel hotel = HotelManagement.getCurrentHotelOwner().getHotel();
-        if(hotel.getGuests().isEmpty())
+        if (hotel.getGuests().isEmpty())
             System.out.println("there is no guest yet");
-        else{
-        for(Guest guest: hotel.getGuests()){
-            System.out.println(number + "-" + guest.toString());
-            number++;
-        }}
+        else {
+            for (Guest guest : hotel.getGuests()) {
+                System.out.println(number + "-" + guest.toString());
+                number++;
+            }
+        }
     }
 
-    private static void showHotelFoods(){
+    private static void showHotelFoods() {
         int number = 1;
         Hotel hotel = HotelManagement.getCurrentHotelOwner().getHotel();
-        if(hotel.getAllFoods().isEmpty())
+        if (hotel.getAllFoods().isEmpty())
             System.out.println("there is no food yet");
-        else{
-        for(Food food : hotel.getAllFoods()){
-            System.out.println(number + "-" + food.toString());
-            number++;
-        }}
+        else {
+            for (Food food : hotel.getAllFoods()) {
+                System.out.println(number + "-" + food.toString());
+                number++;
+            }
+        }
     }
 
-    private static void showHotelRooms(){
+    private static void showHotelRooms() {
         int number = 1;
         Hotel hotel = HotelManagement.getCurrentHotelOwner().getHotel();
-        if(hotel.getRooms().isEmpty())
+        if (hotel.getRooms().isEmpty())
             System.out.println("there is no room yet");
-        else{
-        for(Room room: hotel.getRooms()){
-            System.out.println(number + "-" + room.toString());
-            number++;
-        }}
+        else {
+            for (Room room : hotel.getRooms()) {
+                System.out.println(number + "-" + room.toString());
+                number++;
+            }
+        }
     }
 
-    private static void showHotelBalance(){
+    private static void showHotelBalance() {
         Hotel hotel = HotelManagement.getCurrentHotelOwner().getHotel();
         System.out.println("your hotel balance is: " + hotel.getBalance());
     }
 
-    private static void increaseHotelBalance(Matcher matcher){
+    private static void increaseHotelBalance(Matcher matcher) {
         double amount = Double.parseDouble(matcher.group("amount"));
         HotelOwnerMenuMessages message = HotelOwnerMenuController.increaseHotelBalance(amount);
-        switch (message){
+        switch (message) {
             case INCREASE_HOTEL_BALANCE_INVALID:
                 System.out.println("increase balance failed, you must increase by a positive amount");
                 break;
@@ -178,13 +181,13 @@ public class HotelOwnerMenu {
         }
     }
 
-    private static void addFood(Matcher matcher){
+    private static void addFood(Matcher matcher) {
         String name = matcher.group("name");
         double cost = Double.parseDouble(matcher.group("cost"));
         double price = Double.parseDouble(matcher.group("price"));
         String description = matcher.group("description");
         HotelOwnerMenuMessages message = HotelOwnerMenuController.addFood(name, cost, price, description);
-        switch(message){
+        switch (message) {
             case ADD_FOOD_COST_INVALID:
                 System.out.println("add food failed, the cost of the food must be positive");
                 break;
@@ -209,11 +212,11 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void removeFood(Matcher matcher){
+    private static void removeFood(Matcher matcher) {
         String name = matcher.group("name");
         HotelOwnerMenuMessages message = HotelOwnerMenuController.removeFood(name);
-        switch (message){
-            case REMOVE_FOOD_NOT_FOUND :
+        switch (message) {
+            case REMOVE_FOOD_NOT_FOUND:
                 System.out.println("remove food failed, there is no food with this name on your hotel's menu");
                 break;
             case REMOVE_FOOD_SUCCESS:
@@ -224,11 +227,11 @@ public class HotelOwnerMenu {
         }
     }
 
-    private static void increaseOneRoomPrice(Matcher matcher){
+    private static void increaseOneRoomPrice(Matcher matcher) {
         double percent = Double.parseDouble(matcher.group("percent"));
         int roomNumber = Integer.parseInt(matcher.group("roomNumber"));
         HotelOwnerMenuMessages message = HotelOwnerMenuController.increaseOneRoomPrice(percent, roomNumber);
-        switch(message){
+        switch (message) {
             case INCREASE_ONE_ROOM_PRICE_INVALID:
                 System.out.println("increase one room price failed, you must increase the price by a positive percent");
                 break;
@@ -244,10 +247,10 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void increaseAllRoomsPrice(Matcher matcher){
+    private static void increaseAllRoomsPrice(Matcher matcher) {
         double percent = Double.parseDouble(matcher.group("percent"));
         HotelOwnerMenuMessages message = HotelOwnerMenuController.increaseAllRoomsPrice(percent);
-        switch (message){
+        switch (message) {
             case INCREASE_ALL_ROOMS_PRICE_EMPTY:
                 System.out.println("increase all rooms price failed, there is no room in your hotel yet");
                 break;
@@ -263,11 +266,11 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void setDiscountOneRoom(Matcher matcher){
+    private static void setDiscountOneRoom(Matcher matcher) {
         double percent = Double.parseDouble(matcher.group("discountPercent"));
         int roomNumber = Integer.parseInt(matcher.group("roomNumber"));
         HotelOwnerMenuMessages message = HotelOwnerMenuController.setDiscountOneRoom(percent, roomNumber);
-        switch (message){
+        switch (message) {
             case SET_DISCOUNT_ONE_ROOM_INVALID:
                 System.out.println("set discount one room failed, you must set a discount by positive percent");
                 break;
@@ -286,10 +289,10 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void setDiscountAllRooms(Matcher matcher){
+    private static void setDiscountAllRooms(Matcher matcher) {
         double percent = Double.parseDouble(matcher.group("discountPercent"));
         HotelOwnerMenuMessages message = HotelOwnerMenuController.setDiscountAllRooms(percent);
-        switch (message){
+        switch (message) {
             case SET_DISCOUNT_ALL_ROOMS_EMPTY:
                 System.out.println("set discount all rooms failed, there is no room in your hotel yet");
                 break;
@@ -308,11 +311,11 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void setDiscountOneFood(Matcher matcher){
+    private static void setDiscountOneFood(Matcher matcher) {
         double percent = Double.parseDouble(matcher.group("discountPercent"));
         String name = matcher.group("foodName");
         HotelOwnerMenuMessages message = HotelOwnerMenuController.setDiscountOneFood(percent, name);
-        switch (message){
+        switch (message) {
             case SET_DISCOUNT_ONE_FOOD_INVALID:
                 System.out.println("set discount one food failed, you must set a discount by a positive percentage");
                 break;
@@ -331,10 +334,10 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void setDiscountAllFoods(Matcher matcher){
+    private static void setDiscountAllFoods(Matcher matcher) {
         double percent = Double.parseDouble(matcher.group("discountPercent"));
         HotelOwnerMenuMessages message = HotelOwnerMenuController.setDiscountAllFoods(percent);
-        switch (message){
+        switch (message) {
             case SET_DISCOUNT_ALL_FOODS_EMPTY:
                 System.out.println("set discount all foods failed, there is no food on your hotel menu yet");
                 break;
@@ -353,11 +356,11 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void increaseOneFoodPrice(Matcher matcher){
+    private static void increaseOneFoodPrice(Matcher matcher) {
         double percent = Double.parseDouble(matcher.group("percent"));
         String name = matcher.group("foodName");
         HotelOwnerMenuMessages message = HotelOwnerMenuController.increaseOneFoodPrice(percent, name);
-        switch(message){
+        switch (message) {
             case INCREASE_ONE_FOOD_PRICE_INVALID:
                 System.out.println("increase one food price failed, you must increase the price by a positive percent");
                 break;
@@ -373,10 +376,10 @@ public class HotelOwnerMenu {
 
     }
 
-    private static void increaseAllFoodsPrice(Matcher matcher){
+    private static void increaseAllFoodsPrice(Matcher matcher) {
         double percent = Double.parseDouble(matcher.group("percent"));
         HotelOwnerMenuMessages message = HotelOwnerMenuController.increaseAllFoodsPrice(percent);
-        switch (message){
+        switch (message) {
             case INCREASE_ALL_FOODS_PRICE_EMPTY:
                 System.out.println("increase all foods price failed, there is no food on your hotel menu yet");
                 break;

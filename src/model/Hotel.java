@@ -9,7 +9,6 @@ public class Hotel {
     private final String location;
     private double balance;
     private double rating;
-    private ArrayList<Double> allRatings;
     private ArrayList<Comment> comments;
     private ArrayList<Guest> guests;
     private ArrayList<Room> rooms;
@@ -19,14 +18,13 @@ public class Hotel {
     private final int hotelId;
     private static int lastHotelId;
 
-    static{
+    static {
         lastHotelId = 0;
     }
 
     {
         balance = 0;
         rating = 0;
-        allRatings = new ArrayList<>();
         comments = new ArrayList<>();
         rooms = new ArrayList<>();
         availableRooms = new ArrayList<>();
@@ -35,124 +33,136 @@ public class Hotel {
         guests = new ArrayList<>();
     }
 
-    public Hotel(String name, String location){
+    public Hotel(String name, String location) {
         this.name = name;
         this.location = location;
         this.hotelId = getLastHotelId();
         lastHotelId++;
     }
 
-    public Room getRoomByNumber(int number){
+    public Room getRoomByNumber(int number) {
         for (Room room : rooms) {
-            if(room.getNumber() == number)
+            if (room.getNumber() == number)
                 return room;
         }
         return null;
     }
 
-    public Food getFoodByName(String name){
-        for(Food food : allFoods){
-            if(food.getName().equals(name))
+    public Food getFoodByName(String name) {
+        for (Food food : allFoods) {
+            if (food.getName().equals(name))
                 return food;
         }
         return null;
     }
 
-    public void addFood(Food food){
+    public void addFood(Food food) {
         allFoods.add(food);
     }
 
-    public void removeFood(Food food){
+    public void removeFood(Food food) {
         allFoods.remove(food);
     }
 
-    public void spendFromBalance(double cost){
+    public void spendFromBalance(double cost) {
         balance -= cost;
     }
 
-    public void addRoom(Room room){
+    public void addRoom(Room room) {
         rooms.add(room);
         availableRooms.add(room);
         room.setHotel(this);
     }
 
-    public void removeRoom(Room room){
+    public void removeRoom(Room room) {
         rooms.remove(room);
         availableRooms.remove(room);
     }
 
-    public void increaseBalance(double amount){
+    public void increaseBalance(double amount) {
         balance += amount;
     }
 
-    public void increaseOneRoomPrice(Room room, double percent){
+    public void increaseOneRoomPrice(Room room, double percent) {
         double initialPrice = room.getPrice();
         percent /= 100;
         room.setPrice(initialPrice + percent * initialPrice);
     }
 
-    public void increaseAllRoomsPrice(double percent){
+    public void increaseAllRoomsPrice(double percent) {
         percent /= 100;
         double initialPrice;
-        for(Room room: rooms){
+        for (Room room : rooms) {
             initialPrice = room.getPrice();
             room.setPrice(initialPrice + percent * initialPrice);
         }
     }
 
-    public void setDiscountOneRoom(Room room, double percent){
+    public void setDiscountOneRoom(Room room, double percent) {
         double initialPrice = room.getPrice();
         percent /= 100;
         room.setPrice(initialPrice - percent * initialPrice);
     }
 
-    public void setDiscountAllRooms(double percent){
+    public void setDiscountAllRooms(double percent) {
         percent /= 100;
         double initialPrice;
-        for(Room room : rooms){
+        for (Room room : rooms) {
             initialPrice = room.getPrice();
             room.setPrice(initialPrice - percent * initialPrice);
         }
     }
 
-    public void setDiscountOneFood(Food food, double percent){
+    public void setDiscountOneFood(Food food, double percent) {
         double initialPrice = food.getPrice();
         percent /= 100;
         food.setPrice(initialPrice - percent * initialPrice);
     }
 
-    public void setDiscountAllFoods(double percent){
+    public void setDiscountAllFoods(double percent) {
         percent /= 100;
         double initialPrice;
-        for(Food food: allFoods){
+        for (Food food : allFoods) {
             initialPrice = food.getPrice();
             food.setPrice(initialPrice - percent * initialPrice);
         }
     }
 
-    public void increaseOneFoodPrice(Food food, double percent){
+    public void increaseOneFoodPrice(Food food, double percent) {
         double initialPrice = food.getPrice();
         percent /= 100;
         food.setPrice(initialPrice + percent * initialPrice);
     }
 
-    public void increaseAllFoodsPrice(double percent){
+    public void increaseAllFoodsPrice(double percent) {
         percent /= 100;
         double initialPrice;
-        for(Food food: allFoods){
+        for (Food food : allFoods) {
             initialPrice = food.getPrice();
             food.setPrice(initialPrice + percent * initialPrice);
         }
     }
 
-    public void reserveRoom(Room room){
+    public void reserveRoom(Room room) {
         bookedRooms.add(room);
         availableRooms.remove(room);
     }
 
-    public void leaveRoom(Room room){
+    public void leaveRoom(Room room) {
         bookedRooms.remove(room);
         availableRooms.add(room);
+    }
+
+    public void updateRating() {
+        double sumRating = 0;
+        for (Room room : rooms) {
+            sumRating += room.getRating();
+        }
+        setRating(sumRating / rooms.size());
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
     }
 
     public static int getLastHotelId() {
@@ -235,13 +245,6 @@ public class Hotel {
         this.rating = rating;
     }
 
-    public ArrayList<Double> getAllRatings() {
-        return allRatings;
-    }
-
-    public void setAllRatings(ArrayList<Double> allRatings) {
-        this.allRatings = allRatings;
-    }
 
     public ArrayList<Comment> getComments() {
         return comments;
@@ -251,7 +254,8 @@ public class Hotel {
         this.comments = comments;
     }
 
-    public String toString(){
-        return " name: " + name + " | location: " + location + " | number of available rooms: " + availableRooms.size();
+    public String toString() {
+        return " name: " + name + " | location: " + location + " | number of available rooms: " + availableRooms.size()
+                + " | rating: " + rating;
     }
 }

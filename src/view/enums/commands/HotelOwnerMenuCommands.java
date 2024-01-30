@@ -25,7 +25,8 @@ public enum HotelOwnerMenuCommands {
 
 
     public String regex;
-    HotelOwnerMenuCommands(String regex){
+
+    HotelOwnerMenuCommands(String regex) {
         this.regex = regex;
     }
 

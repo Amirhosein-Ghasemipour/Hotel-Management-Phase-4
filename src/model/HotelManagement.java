@@ -15,7 +15,7 @@ public class HotelManagement {
     private static HotelOwner currentHotelOwner;
     private static Guest currentGuest;
 
-    static{
+    static {
         allUsers = new ArrayList<>();
         allHotels = new ArrayList<>();
         allHotelOwners = new ArrayList<>();
@@ -25,75 +25,76 @@ public class HotelManagement {
         currentGuest = null;
     }
 
-    public static User getUserByUsername(String username){
-        if(allUsers.size() == 0)
+    public static User getUserByUsername(String username) {
+        if (allUsers.size() == 0)
             return null;
         for (User user : allUsers) {
-            if(user.getUsername().equals(username))
+            if (user.getUsername().equals(username))
                 return user;
         }
         return null;
     }
 
-    public static Guest getGuestByUsername(String username){
-        if(allGuests.size() == 0)
+    public static Guest getGuestByUsername(String username) {
+        if (allGuests.size() == 0)
             return null;
-        for(Guest guest : allGuests){
-            if(guest.getUsername().equals(username))
+        for (Guest guest : allGuests) {
+            if (guest.getUsername().equals(username))
                 return guest;
         }
         return null;
     }
 
-    public static HotelOwner getHotelOwnerByUsername(String username){
-        if(allHotelOwners.size() == 0)
+    public static HotelOwner getHotelOwnerByUsername(String username) {
+        if (allHotelOwners.size() == 0)
             return null;
-        for(HotelOwner hotelOwner : allHotelOwners){
-            if(hotelOwner.getUsername().equals(username))
+        for (HotelOwner hotelOwner : allHotelOwners) {
+            if (hotelOwner.getUsername().equals(username))
                 return hotelOwner;
         }
         return null;
     }
 
-    public static Hotel getHotelByName(String name){
-        if(allHotels.size() == 0)
+    public static Hotel getHotelByName(String name) {
+        if (allHotels.size() == 0)
             return null;
-        for(Hotel hotel : allHotels){
-            if(hotel.getName().equals(name))
+        for (Hotel hotel : allHotels) {
+            if (hotel.getName().equals(name))
                 return hotel;
         }
         return null;
     }
 
-    public static void addUser(User user){
+    public static void addUser(User user) {
         allUsers.add(user);
     }
-    public static void addGuest(Guest guest){
+
+    public static void addGuest(Guest guest) {
         allGuests.add(guest);
     }
 
-    public static void addHotelOwner(HotelOwner hotelOwner){
+    public static void addHotelOwner(HotelOwner hotelOwner) {
         allHotelOwners.add(hotelOwner);
     }
 
-    public static void addHotel(Hotel hotel){
+    public static void addHotel(Hotel hotel) {
         allHotels.add(hotel);
     }
 
-    public static void removeUser(User user){
+    public static void removeUser(User user) {
         allUsers.remove(user);
     }
 
-    public static void removeGuest(Guest guest){
+    public static void removeGuest(Guest guest) {
         allGuests.remove(guest);
     }
 
-    public static void removeHotelOwner(HotelOwner hotelOwner){
+    public static void removeHotelOwner(HotelOwner hotelOwner) {
         allHotelOwners.remove(hotelOwner);
         removeHotel(hotelOwner.getHotel());
     }
 
-    public static void removeHotel(Hotel hotel){
+    public static void removeHotel(Hotel hotel) {
         allHotels.remove(hotel);
     }
 

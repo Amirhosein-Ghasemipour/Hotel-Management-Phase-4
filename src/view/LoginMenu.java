@@ -8,33 +8,33 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class LoginMenu {
-    public static void run(){
+    public static void run() {
         Scanner scanner = new Scanner(System.in);
-        while(true){
+        while (true) {
             String command = scanner.nextLine();
             Matcher matcher;
-            if(command.matches("^\\s*exit\\s*$")){
+            if (command.matches("^\\s*exit\\s*$")) {
                 break;
-            }else if((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.REGISTER_HOTEL_OWNER)) != null){
+            } else if ((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.REGISTER_HOTEL_OWNER)) != null) {
                 checkRegisterHotelOwner(matcher);
-            } else if((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.REGISTER_GUEST)) != null){
+            } else if ((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.REGISTER_GUEST)) != null) {
                 checkRegisterGuest(matcher);
-            } else if((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.LOGIN)) != null){
+            } else if ((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.LOGIN)) != null) {
                 checkLogin(matcher, scanner);
-            } else if((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.CHANGE_PASSWORD)) != null){
+            } else if ((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.CHANGE_PASSWORD)) != null) {
                 checkChangePassword(matcher);
-            } else if((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.REMOVE_ACCOUNT)) != null){
+            } else if ((matcher = LoginMenuCommands.getMatcher(command, LoginMenuCommands.REMOVE_ACCOUNT)) != null) {
                 checkRemoveAccount(matcher);
             } else
                 System.out.println("invalid command!");
         }
     }
 
-    private static void checkRegisterGuest(Matcher matcher){
+    private static void checkRegisterGuest(Matcher matcher) {
         String username = matcher.group("username");
         String password = matcher.group("password");
         LoginMenuMessages message = LoginMenuController.checkRegisterGuest(username, password);
-        switch(message){
+        switch (message) {
             case REGISTER_SUCCESS:
                 System.out.println("guest was registered successfully");
                 break;
@@ -52,13 +52,13 @@ public class LoginMenu {
         }
     }
 
-    private static void checkRegisterHotelOwner(Matcher matcher){
+    private static void checkRegisterHotelOwner(Matcher matcher) {
         String username = matcher.group("username");
         String password = matcher.group("password");
         String hotelName = matcher.group("hotelName");
         String hotelLocation = matcher.group("hotelLocation");
         LoginMenuMessages message = LoginMenuController.checkRegisterHotelOwner(username, password, hotelName, hotelLocation);
-        switch (message){
+        switch (message) {
             case REGISTER_SUCCESS:
                 System.out.println("hotel owner was registered successfully");
                 break;
@@ -80,11 +80,11 @@ public class LoginMenu {
         }
     }
 
-    private static void checkLogin(Matcher matcher, Scanner scanner){
+    private static void checkLogin(Matcher matcher, Scanner scanner) {
         String username = matcher.group("username");
         String password = matcher.group("password");
         LoginMenuMessages message = LoginMenuController.checkLogin(username, password);
-        switch(message){
+        switch (message) {
             case LOGIN_USERNAME_NOT_FOUND:
                 System.out.println("login failed, no user with this username was found");
                 break;
@@ -104,12 +104,12 @@ public class LoginMenu {
         }
     }
 
-    private static void checkChangePassword(Matcher matcher){
+    private static void checkChangePassword(Matcher matcher) {
         String username = matcher.group("username");
         String oldPassword = matcher.group("oldPassword");
         String newPassword = matcher.group("newPassword");
         LoginMenuMessages message = LoginMenuController.checkChangePassword(username, oldPassword, newPassword);
-        switch(message){
+        switch (message) {
             case PASSWORD_CHANGE_USERNAME_NOT_FOUND:
                 System.out.println("password change failed, no user with this username was found");
                 break;
@@ -128,11 +128,11 @@ public class LoginMenu {
 
     }
 
-    private static void checkRemoveAccount(Matcher matcher){
+    private static void checkRemoveAccount(Matcher matcher) {
         String username = matcher.group("username");
         String password = matcher.group("password");
         LoginMenuMessages message = LoginMenuController.checkRemoveAccount(username, password);
-        switch(message){
+        switch (message) {
             case REMOVE_ACCOUNT_USERNAME_NOT_FOUND:
                 System.out.println("account remove failed, no user with this username was found");
                 break;

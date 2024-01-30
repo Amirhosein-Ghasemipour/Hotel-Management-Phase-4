@@ -20,8 +20,8 @@ public abstract class User {
         lastUserId++;
     }
 
-    public boolean isPasswordCorrect(String password){
-       return password.equals(getPassword());
+    public boolean isPasswordCorrect(String password) {
+        return password.equals(getPassword());
     }
 
     public String getName() {

@@ -12,24 +12,24 @@ public class Guest extends User {
     private ArrayList<Food> boughtFoods;
     private static int lastGuestId;
 
-    static{
+    static {
         lastGuestId = 0;
     }
 
     {
         balance = 0;
-       reservedRoom = null;
-       boughtFoods = new ArrayList<>();
+        reservedRoom = null;
+        boughtFoods = new ArrayList<>();
     }
 
-    public Guest(String username, String password){
+    public Guest(String username, String password) {
         super(username, password);
         this.guestId = getLastGuestId();
         lastGuestId++;
     }
 
-    public void addFood(Food food, int number){
-        for(int i = 0; i < number; i++){
+    public void addFood(Food food, int number) {
+        for (int i = 0; i < number; i++) {
             boughtFoods.add(food);
         }
     }
@@ -70,7 +70,7 @@ public class Guest extends User {
         this.boughtFoods = boughtFoods;
     }
 
-    public String toString(){
+    public String toString() {
         return " username: " + getUsername() + " | room number: " + reservedRoom.getNumber();
     }
 }

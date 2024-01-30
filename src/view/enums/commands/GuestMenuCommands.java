@@ -14,13 +14,14 @@ public enum GuestMenuCommands {
     GUEST_INCREASE_BALANCE("^increase\\s+my\\s+balance\\s+by\\s+(?<amount>\\d+)$"),
     GUEST_SHOW_MY_ROOM("^show\\s+my\\s+room$"),
     GUEST_SHOW_MY_FOODS("^show\\s+my\\s+foods$"),
-    GUEST_RATE_HOTEL("^rate\\s+hotel\\s+(?<rating>\\d+)$"),
+    GUEST_RATE_MY_ROOM("^rate\\s+my\\s+room\\s+(?<rating>\\d+)$"),
+    GUEST_SHOW_HOTEL_COMMENTS("^show\\s+hotel\\s+(?<hotelName>\\S+)\\s+comments$"),
     LEAVE_COMMENT_FOR_HOTEL("^leave\\s+comment\\s+(?<content>.+)$");
 
 
-
     public String regex;
-    GuestMenuCommands(String regex){
+
+    GuestMenuCommands(String regex) {
         this.regex = regex;
     }
 

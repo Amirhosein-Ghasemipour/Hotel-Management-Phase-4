@@ -13,7 +13,7 @@ public enum LoginMenuCommands {
     REMOVE_ACCOUNT("^remove\\s+account\\s+u\\s+(?<username>\\S+)\\s+p\\s+(?<password>\\S+)$");
     public String regex;
 
-    LoginMenuCommands(String regex){
+    LoginMenuCommands(String regex) {
         this.regex = regex;
     }
 

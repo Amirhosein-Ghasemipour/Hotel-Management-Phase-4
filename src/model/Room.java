@@ -1,25 +1,45 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Room {
     private int number;
+    private ArrayList<Double> allRatings;
+    private double rating;
     private double size;
     private double price;
     private String type;
     private Hotel hotel;
     private boolean availability;
+
     {
         availability = true;
+        allRatings = new ArrayList<>();
+        rating = 0;
     }
 
-    public Room(int number, double size, double price, String type){
+    public Room(int number, double size, double price, String type) {
         this.number = number;
         this.size = size;
         this.price = price;
         this.type = type;
     }
-    public boolean isAvailable(){
+
+    public boolean isAvailable() {
         return availability;
     }
+
+    public void updateRating(double rating) {
+        allRatings.add(rating);
+        double avgRating;
+        double sumRating = 0;
+        for (double rate : allRatings) {
+            sumRating += rate;
+        }
+        avgRating = sumRating / allRatings.size();
+        setRating(avgRating);
+    }
+
     public int getNumber() {
         return number;
     }
@@ -64,12 +84,28 @@ public class Room {
         this.availability = availability;
     }
 
-    public String toString(){
+    public ArrayList<Double> getAllRatings() {
+        return allRatings;
+    }
+
+    public void setAllRatings(ArrayList<Double> allRatings) {
+        this.allRatings = allRatings;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String toString() {
         String status;
-        if(isAvailable())
+        if (isAvailable())
             status = "available";
         else status = "not available";
         return " number: " + number + " | size: " + size + " | price: " + price + " | type: "
-                + type + " | availability: " + status;
+                + type + " | availability: " + status + " | rating: " + rating;
     }
 }

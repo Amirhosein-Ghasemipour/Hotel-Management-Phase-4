@@ -5,7 +5,7 @@ public class Food {
     private double price;
     private String description;
 
-    public Food(String name, double price, String description){
+    public Food(String name, double price, String description) {
         setName(name);
         setPrice(price);
         setDescription(description);
@@ -36,7 +36,7 @@ public class Food {
         this.description = description;
     }
 
-    public String toString(){
+    public String toString() {
         return " name: " + name + " | price: " + price + " | description: " + description;
     }
 }
