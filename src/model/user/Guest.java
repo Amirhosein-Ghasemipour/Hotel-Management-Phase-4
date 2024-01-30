@@ -25,6 +25,7 @@ public class Guest extends User {
         lastGuestId++;
     }
 
+
     public static int getLastGuestId() {
         return lastGuestId;
     }

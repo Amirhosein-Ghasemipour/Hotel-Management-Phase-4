@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public enum GuestMenuCommands {
     GUEST_RESERVE_ROOM("^reserve\\s+from\\s+hotel\\s+(?<hotelName>\\S+)\\s+room\\s+(?<roomNumber>\\d+)$"),
+    GUEST_LEAVE_ROOM("^leave\\s+room$"),
     GUEST_BUY_FOOD("^buy\\s+food\\s+(?<foodName>\\w+)\\s+(?<number>\\d+)$"),
     GUEST_SHOW_ALL_HOTELS("^show\\s+all\\s+hotels$"),
     GUEST_SHOW_HOTEL_ROOMS("^show\\s+hotel\\s+(?<hotelName>\\S+)\\s+rooms$"),

@@ -145,6 +145,16 @@ public class Hotel {
         }
     }
 
+    public void reserveRoom(Room room){
+        bookedRooms.add(room);
+        availableRooms.remove(room);
+    }
+
+    public void leaveRoom(Room room){
+        bookedRooms.remove(room);
+        availableRooms.add(room);
+    }
+
     public static int getLastHotelId() {
         return lastHotelId;
     }

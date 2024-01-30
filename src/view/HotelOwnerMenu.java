@@ -18,6 +18,7 @@ public class HotelOwnerMenu {
             String command = scanner.nextLine();
             Matcher matcher;
             if(command.matches("^\\s*logout\\s*$")){
+                System.out.println("logged out to login menu");
                 break;
             } else if((matcher = HotelOwnerMenuCommands.getMatcher(command, HotelOwnerMenuCommands.OWNER_ADD_ROOM)) != null){
                 addRoom(matcher);
