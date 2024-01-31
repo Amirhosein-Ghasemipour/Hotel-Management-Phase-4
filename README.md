@@ -5,5 +5,11 @@ Once logged in, guests are directed to the guest menu while hotel owners are dir
 
 note that this program does not currently have a graphical user interface (GUI).
 
-# Class diagram
+# Class Diagram
 ![HotelManagementClassDiagram](https://github.com/Amirhosein-Ghasemipour/Hotel-Management-Phase-4/assets/119773941/cc9d6977-75b6-4b54-b6bd-546bb46cb155)
+
+# Sequence Diagram
+![Hotel_Management_Sequence_Diagram](https://github.com/Amirhosein-Ghasemipour/Hotel-Management-Phase-4/assets/119773941/07aa4f0f-b043-415d-8aca-8bd3aa3f102c)
+
+# User Story
+[Hands-on project - phase 1.pdf](https://github.com/Amirhosein-Ghasemipour/Hotel-Management-Phase-4/files/14108117/Hands-on.project.-.phase.1.pdf)
